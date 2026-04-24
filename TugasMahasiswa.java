@@ -82,4 +82,52 @@ public class TugasMahasiswa {
         }
         System.out.println();
     }
+
+    // Konversi desimal ke biner
+    public String konversiDesimalKeBiner(int nilai) {
+        StackKonversi stack = new StackKonversi();
+        while (nilai > 0) {
+            int sisa = nilai % 2;
+            stack.push(sisa);
+            nilai = nilai / 2;
+        }
+        String biner = new String();
+        while (!stack.isEmpty()) {
+            biner += stack.pop();
+        }
+        return biner;
+    }
+}
+
+class StackKonversi {
+    int[] stack;
+    int top;
+    int size;
+
+    StackKonversi() {
+        this.size = 100;
+        stack = new int[size];
+        top = -1;
+    }
+
+    public boolean isEmpty() {
+        return top == -1;
+    }
+
+    public boolean isFull() {
+        return top == size - 1;
+    }
+
+    public void push(int nilai) {
+        if (!isFull()) {
+            stack[++top] = nilai;
+        }
+    }
+
+    public int pop() {
+        if (!isEmpty()) {
+            return stack[top--];
+        }
+        return -1;
+    }
 }

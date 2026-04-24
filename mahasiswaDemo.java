@@ -15,6 +15,7 @@ public class mahasiswaDemo {
             System.out.println("4. Melihat Daftar Tugas");
             System.out.println("5. Melihat Tugas Terbawah");
             System.out.println("6. Hitung Jumlah Tugas");
+            System.out.println("7. Konversi Desimal ke Biner");
             System.out.println("0. Keluar");
             System.out.print("Pilih: ");
             pilih = scan.nextInt();
@@ -41,8 +42,9 @@ public class mahasiswaDemo {
                         System.out.print("Masukkan nilai (0-100): ");
                         int nilai = scan.nextInt();
                         dinilai.tugasDinilai(nilai);
-
                         System.out.println("Nilai tugas " + dinilai.nama + " = " + nilai);
+                        String binerNilai = stack.konversiDesimalKeBiner(nilai);
+                        System.out.println("Nilai dalam biner: " + binerNilai);
                     }
                     break;
 
@@ -71,6 +73,13 @@ public class mahasiswaDemo {
                     System.out.println("Jumlah tugas yang sudah dikumpulkan: " + jumlah);
                     break;
 
+                case 7:
+                    System.out.print("Masukkan angka desimal: ");
+                    int desimal = scan.nextInt();
+                    String biner = stack.konversiDesimalKeBiner(desimal);
+                    System.out.println("Hasil konversi desimal " + desimal + " ke biner: " + biner);
+                    break;
+
                 case 0:
                     System.out.println("Terima kasih!");
                     break;
@@ -79,6 +88,6 @@ public class mahasiswaDemo {
                     System.out.println("Pilihan tidak valid!");
             }
 
-        } while (pilih >= 0 && pilih <= 6 && pilih != 0);
+        } while (pilih >= 0 && pilih <= 7 && pilih != 0);
     }
 }

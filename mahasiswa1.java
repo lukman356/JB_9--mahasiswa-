@@ -1,3 +1,6 @@
+public class mahasiswa1 {
+}
+
 class Mahasiswa {
     String nim;
     String nama;
@@ -100,5 +103,52 @@ class StackTugasMahasiswa {
         for (int i = top; i >= 0; i--) {
             System.out.println(stack[i]);
         }
+    }
+
+    String konversiDesimalKeBiner(int nilai) {
+        StackKonversiInt stackKonversi = new StackKonversiInt();
+        while (nilai > 0) {
+            int sisa = nilai % 2;
+            stackKonversi.push(sisa);
+            nilai = nilai / 2;
+        }
+        String biner = new String();
+        while (!stackKonversi.isEmpty()) {
+            biner += stackKonversi.pop();
+        }
+        return biner;
+    }
+}
+
+class StackKonversiInt {
+    int[] stack;
+    int top;
+    int size;
+
+    StackKonversiInt() {
+        this.size = 100;
+        stack = new int[size];
+        top = -1;
+    }
+
+    boolean isEmpty() {
+        return top == -1;
+    }
+
+    boolean isFull() {
+        return top == size - 1;
+    }
+
+    void push(int nilai) {
+        if (!isFull()) {
+            stack[++top] = nilai;
+        }
+    }
+
+    int pop() {
+        if (!isEmpty()) {
+            return stack[top--];
+        }
+        return -1;
     }
 }
